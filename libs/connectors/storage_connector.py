@@ -78,6 +78,7 @@ class StorageConnector:
         """
         raise NotImplementedError
 
+
     def open_as_dataframe(self, filepath: str, **args) -> pd.DataFrame:
         """Retrieve file from storage as pandas DataFrame
 

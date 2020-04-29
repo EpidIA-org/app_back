@@ -5,13 +5,20 @@ from flask import Flask, render_template, jsonify
 
 from config import config
 from libs.blueprints.api import api_bp
+from libs.blueprints.ephad import ephad_bp
+from libs.blueprints.api_simu import api_simu
 from libs.blueprints.api_insee import api_insee_bp
+from libs.blueprints.api_predictions import predictor_bp
 
 app = Flask(__name__) # Create the Flask App
 
 # Register the blueprints to use
 app.register_blueprint(api_bp)
+app.register_blueprint(ephad_bp)
+app.register_blueprint(api_simu)
 app.register_blueprint(api_insee_bp)
+app.register_blueprint(predictor_bp)
+
 
 # Generate the configuration object 
 ENV = os.environ.get('ENVIRONMENT').lower()

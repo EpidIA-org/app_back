@@ -50,5 +50,8 @@ def generate_fake_data(date, dpts):
     ]
 
 
-def get_mockup_data():
-    return pd.read_csv(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'mockup_data.csv'), sep=';')
+def get_mockup_data(simu_data=False):
+    if simu_data:
+        return pd.read_csv(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'model_predictions.csv'), sep=';')
+    else:
+        return pd.read_csv(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'mockup_data.csv'), sep=';')

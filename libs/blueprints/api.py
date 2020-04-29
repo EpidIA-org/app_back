@@ -12,10 +12,10 @@ if not(is_mockup_activated):
     from libs.connectors import STORAGE_CONNECTOR
 
 
-def fetch_data(filename_format):
+def fetch_data(filename_format,simu=False):
     # Fetch Data from Mockup/Storage
     if is_mockup_activated:
-        df = get_mockup_data()
+        df = get_mockup_data(simu)
     else:
         file_to_retrieve = STORAGE_CONNECTOR.get_last_filename_version(filename_format)
         df = STORAGE_CONNECTOR.open_as_dataframe(file_to_retrieve, sep=";")
@@ -114,7 +114,6 @@ def get_country_until(yyyy=None, mm=None, dd=None, version="v1"):
     yyyy = request.args.get("yyyy", yyyy)
     mm = request.args.get("mm", mm)
     dd = request.args.get("dd", dd)
-    area = None
     # Check if date is not sampled genuinely
     endpoint_has_no_date = (yyyy is None) or (mm is None) or (dd is None)
     if endpoint_has_no_date:

@@ -88,3 +88,10 @@ def format_v2(obj):
     }
     d = {"date": obj.get("jour"), "area": obj.get("dep"), "data": dpts_data}
     return d
+
+
+def format_simu(obj):
+    date_data = obj.get('date')
+    del obj["date"]
+
+    return {"data": obj, "date": date_data}
